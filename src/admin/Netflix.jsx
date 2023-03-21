@@ -184,19 +184,19 @@ function Freefire() {
                                     <li>
                                         <div className="flex items-center">
                                             <svg aria-hidden="true" className="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" /></svg>
-                                            <a href="/admin/free-fire" className="ml-1 text-sm font-medium text-gray-700 hover:text-indigo-600 md:ml-2 ">Product Games</a>
+                                            <a href="/admin/netflix" className="ml-1 text-sm font-medium text-gray-700 hover:text-indigo-600 md:ml-2 ">Product Games</a>
                                         </div>
                                     </li>
                                     <li>
                                         <div className="flex items-center">
                                             <svg aria-hidden="true" className="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" /></svg>
-                                            <a href="/admin/free-fire" className="ml-1 text-sm font-medium text-gray-700 hover:text-indigo-600 md:ml-2 ">Free Fire</a>
+                                            <a href="/admin/netflix" className="ml-1 text-sm font-medium text-gray-700 hover:text-indigo-600 md:ml-2 ">Netflix</a>
                                         </div>
                                     </li>
                                 </ol>
                             </nav>
                             <div className='text-3xl font-bold mb-4 mt-10'>
-                                Product Free Fire
+                                Product Netflix
                             </div>
                             <div>
                                 <button className=" rounded-full"><PlusCircleIcon className="w-8 hover:text-indigo-500 " onClick={() => setModalShow(true)} /></button>
@@ -290,19 +290,19 @@ function Freefire() {
                                 <li>
                                     <div className="flex items-center">
                                         <svg aria-hidden="true" className="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" /></svg>
-                                        <a href="/admin/free-fire" className="ml-1 text-sm font-medium text-gray-700 hover:text-indigo-600 md:ml-2 ">Product Games</a>
+                                        <a href="/admin/netflix" className="ml-1 text-sm font-medium text-gray-700 hover:text-indigo-600 md:ml-2 ">Product Games</a>
                                     </div>
                                 </li>
                                 <li>
                                     <div className="flex items-center">
                                         <svg aria-hidden="true" className="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" /></svg>
-                                        <a href="/admin/free-fires" className="ml-1 text-sm font-medium text-gray-700 hover:text-indigo-600 md:ml-2 ">Free Fire</a>
+                                        <a href="/admin/netflix" className="ml-1 text-sm font-medium text-gray-700 hover:text-indigo-600 md:ml-2 ">Netflix</a>
                                     </div>
                                 </li>
                             </ol>
                         </nav>
                         <div className='text-3xl font-bold mb-4 mt-10'>
-                            Product Free Fire
+                            Product Netflix
                         </div>
                         <div>
                             <button className=" rounded-full"><PlusCircleIcon className="w-8 hover:text-indigo-500 " onClick={() => setModalShow(true)} /></button>
