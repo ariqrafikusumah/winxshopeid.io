@@ -10,7 +10,7 @@ function FooterBot() {
         <div className="md:flex justify-between">
           <div className="mb-6 md:mb-0">
             <a href="/" className="flex items-center">
-              <img src={Logo} className="h-32 mr-3 rounded-xl" alt="logo" />
+              <img src={Logo} className="h-32 mr-3" alt="logo" />
               {/* <span className="self-center text-2xl font-semibold whitespace-nowrap ">Flowbite</span> */}
             </a>
           </div>

@@ -34,6 +34,8 @@ import ApiGames from "./admin/Apigames";
 import Youtube from "./pages/order/Youtube";
 import Netflix from "./pages/order/Netflix";
 import YoutubeAdmin from "./admin/Youtube";
+import MobileLegends2 from "./pages/order/Mobilelegends2";
+import Mobilelegend2 from "./admin/Mobilelegend2";
 
 function App() {
   return (
@@ -64,6 +66,8 @@ function App() {
         <Route path="/admin/category-game" element={<Category />} />
         <Route path="/admin/mobile-legend" element={<Mobilelegend />} />
         <Route path="/order/mobile-legends" element={<Mobilelegends />} />
+        <Route path="/admin/mobile-legend-2" element={<Mobilelegend2 />} />
+        <Route path="/order/mobile-legends-2" element={<MobileLegends2 />} />
         <Route path="/order/valorant" element={<Valorant />} />
         <Route path="/order/youtube" element={<Youtube />} />
         <Route path="/admin/youtube" element={<YoutubeAdmin />} />

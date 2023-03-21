@@ -8,7 +8,7 @@ import { FormControl, Spinner } from 'react-bootstrap';
 import Payment from '../../components/Payment';
 import axios from 'axios';
 
-export default function MobileLegends() {
+export default function MobileLegends2() {
 
     // ** Modal Petunjuk
     const [show, setShow] = useState(false);
@@ -120,7 +120,7 @@ export default function MobileLegends() {
 
     // ** Read Data APi category
     const [dataCategory, setDataCategory] = useState([]);
-    const id = '-NOQFV4o7ZV2Xzae7eSr';
+    const id = '-NOQFV4o7ZV3Xzae7eSr';
 
     useEffect(() => {
         onValue(ref(db, `/categories/${id}`), (snapshot) => {
@@ -138,7 +138,7 @@ export default function MobileLegends() {
     const [dataProduct, setDataProduct] = useState([]);
 
     useEffect(() => {
-        onValue(ref(db, `/product-ml`), (snapshot) => {
+        onValue(ref(db, `/product-ml-2`), (snapshot) => {
             setDataProduct([]);
             const data = snapshot.val();
             if (data !== null) {

@@ -12,7 +12,7 @@ function NavbarTop() {
         {[false].map((expand) => (
           <Navbar key={expand} bg="light" expand={expand} className=" border-gray-200 shadow-lg xl:px-52 lg:px-32">
             <Container fluid>
-              <Navbar.Brand href="/"><img src={Logo} className="h-9 mr-3 sm:h-9 rounded-xl" alt="logo" /></Navbar.Brand>
+              <Navbar.Brand href="/"><img src={Logo} className="h-9 mr-3 sm:h-9" alt="logo" /></Navbar.Brand>
               {/* <marquee className="xl:w-auto lg:w-auto md:w-auto sm:w-32 xs:w-32 xss:w-32 font-mono text-xl drop-shadow-xl bg-indigo-300 rounded-lg">Nikmati Bonus Diamonds Dan lain lain</marquee> */}
               <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
               <Navbar.Offcanvas
