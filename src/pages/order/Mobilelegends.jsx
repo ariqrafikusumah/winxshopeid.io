@@ -241,7 +241,7 @@ export default function MobileLegends() {
                                                 {errorZone_id && <div className="errorZone_id text-sm text-red-500">{errorZone_id}</div>}
                                             </div>
                                             <div className='relative'>
-                                                <FormControl type="text" id='username' name='username' value={username || (errorUsername && "User Tidak Ditemukan") || "Loading Username ..."} onChange={event => setUsername(event.target.value)} disabled />
+                                                <FormControl type="text" id='username' name='username' value={username || (errorUsername && "User Tidak Ditemukan") || ""} onChange={event => setUsername(event.target.value)} disabled />
                                             </div>
                                         </div>
                                         <div>
@@ -383,7 +383,7 @@ export default function MobileLegends() {
                                                 {errorZone_id && <div className="errorZone_id text-sm text-red-500">{errorZone_id}</div>}
                                             </div>
                                             <div className='relative'>
-                                                <FormControl type="text" id='username' name='username' value={username || (errorUsername && "User Tidak Ditemukan") || "Loading Username ..."} onChange={event => setUsername(event.target.value)} disabled />
+                                                <FormControl type="text" id='username' name='username' value={username || (errorUsername && "User Tidak Ditemukan") || ""} onChange={event => setUsername(event.target.value)} disabled />
                                             </div>
                                         </div>
                                         <div>

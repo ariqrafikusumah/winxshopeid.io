@@ -36,6 +36,8 @@ import Netflix from "./pages/order/Netflix";
 import YoutubeAdmin from "./admin/Youtube";
 import MobileLegends2 from "./pages/order/Mobilelegends2";
 import Mobilelegend2 from "./admin/Mobilelegend2";
+import MobileLegends3 from "./pages/order/Mobilelegends3";
+import Mobilelegend3 from "./admin/Mobilelegend3";
 
 function App() {
   return (
@@ -67,7 +69,9 @@ function App() {
         <Route path="/admin/mobile-legend" element={<Mobilelegend />} />
         <Route path="/order/mobile-legends" element={<Mobilelegends />} />
         <Route path="/admin/mobile-legend-2" element={<Mobilelegend2 />} />
+        <Route path="/admin/mobile-legend-3" element={<Mobilelegend3 />} />
         <Route path="/order/mobile-legends-2" element={<MobileLegends2 />} />
+        <Route path="/order/mobile-legends-3" element={<MobileLegends3 />} />
         <Route path="/order/valorant" element={<Valorant />} />
         <Route path="/order/youtube" element={<Youtube />} />
         <Route path="/admin/youtube" element={<YoutubeAdmin />} />

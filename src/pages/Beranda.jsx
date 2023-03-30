@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Carousel from '../components/Carousel'
 import Spinner from 'react-bootstrap/Spinner';
-import PopUp from '../components/PupUp'
+// import PopUp from '../components/PupUp'
 import { db } from '../database/firebase';
 import { onValue, ref } from 'firebase/database';
 
@@ -31,22 +31,22 @@ function Beranda() {
   }, []);
 
   // ** PopUp
-  const [isOpen, setIsOpen] = useState(false);
-  const handleClose = () => {
-    setIsOpen(false);
-    localStorage.setItem('popupDisplayed', 'true');
-    console.log('Close PopUp');
-  };
-  useEffect(() => {
-    const popupDisplayed = localStorage.getItem('popupDisplayed');
-    if (!popupDisplayed) {
-      setIsOpen(true);
-    }
-    const timer = setTimeout(() => {
-      setIsOpen(true);
-    }, 3000);
-    return () => clearTimeout(timer);
-  }, []);
+  // const [isOpen, setIsOpen] = useState(false);
+  // const handleClose = () => {
+  //   setIsOpen(false);
+  //   localStorage.setItem('popupDisplayed', 'true');
+  //   console.log('Close PopUp');
+  // };
+  // useEffect(() => {
+  //   const popupDisplayed = localStorage.getItem('popupDisplayed');
+  //   if (!popupDisplayed) {
+  //     setIsOpen(true);
+  //   }
+  //   const timer = setTimeout(() => {
+  //     setIsOpen(true);
+  //   }, 3000);
+  //   return () => clearTimeout(timer);
+  // }, []);
   if (isLoading) return (
     <div className="text-center mt-5">
       <Spinner animation="grow" variant="" className='bg-indigo-500' />
@@ -57,7 +57,7 @@ function Beranda() {
   else if (dataView && !isError)
     return (
       <>
-        <PopUp isOpen={isOpen} onClose={handleClose} />
+        {/* <PopUp isOpen={isOpen} onClose={handleClose} /> */}
         <div className='xl:px-52 lg:px-32 md:px-5 xs:px-5 '>
           <div className='mt-3'>
             <Carousel />

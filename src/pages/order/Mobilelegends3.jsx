@@ -4,11 +4,11 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { db } from '../../database/firebase';
 import { ref, onValue } from "firebase/database";
-import { FormControl, Spinner } from 'react-bootstrap';
+import { FormControl, FormSelect, Spinner } from 'react-bootstrap';
 import Payment from '../../components/Payment';
 import axios from 'axios';
 
-export default function MobileLegends2() {
+export default function MobileLegends3() {
 
     // ** Modal Petunjuk
     const [show, setShow] = useState(false);
@@ -23,10 +23,15 @@ export default function MobileLegends2() {
     const [inputValue, setInputValue] = useState('');
     const [user_id, setUser_id] = useState('');
     const [zone_id, setZone_id] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
     const [username, setUsername] = useState('');
     const [errorUser_id, setErrorUser_id] = useState('');
     const [errorZone_id, setErrorZone_id] = useState('');
+    const [errorEmail, setErrorEmail] = useState('');
+    const [errorPassword, setErrorPassword] = useState('');
     const [errorUsername, setErrorUsername] = useState('');
+    const [isUsernameLoading, setIsUsernameLoading] = useState(true);
 
     // ** Read Data APi Apigames
     const [dataApigames, setDataApigames] = useState([]);
@@ -59,10 +64,12 @@ export default function MobileLegends2() {
                     .then(response => {
                         console.log(response.data);
                         setUsername(response.data.data.username);
+                        setIsUsernameLoading(false); // Set the state to false to indicate that the username has been loaded
                     })
                     .catch(error => {
-                        console.log(error.response.data.message);
-                        setErrorUsername(error.response.data.error_msg);
+                        console.log(error.response.data.error_msg);
+                        setErrorUsername('User Tidak Ditemukan');
+                        setIsUsernameLoading(false); // Set the state to false to indicate that the username has been loaded
                     });
             });
         }
@@ -89,6 +96,30 @@ export default function MobileLegends2() {
             setErrorZone_id('');
         } else {
             setErrorZone_id('Bagian ini dapat diisi maksimal 5 karakter');
+        }
+    };
+
+    // ** Max Input Number 320 Digit
+    const handleChangeEmail = (event) => {
+        const inputNumberEmail = event.target.value;
+        // Remove non-numeric characters from the input
+        if (inputNumberEmail.length <= 320) {
+            setEmail(inputNumberEmail);
+            setErrorEmail('');
+        } else {
+            setErrorEmail('Bagian ini dapat diisi maksimal 320 karakter');
+        }
+    };
+
+    // ** Max Input Number 100 Digit
+    const handleChangePassword = (event) => {
+        const inputNumberPassword = event.target.value;
+        // Remove non-numeric characters from the input
+        if (inputNumberPassword.length <= 100) {
+            setPassword(inputNumberPassword);
+            setErrorPassword('');
+        } else {
+            setErrorPassword('Bagian ini dapat diisi maksimal 100 karakter');
         }
     };
 
@@ -120,7 +151,7 @@ export default function MobileLegends2() {
 
     // ** Read Data APi category
     const [dataCategory, setDataCategory] = useState([]);
-    const id = '-NOQFV4o7ZV3Xzae7eSr';
+    const id = '-NOQFV4o7ZV2Xzce7eSr';
 
     useEffect(() => {
         onValue(ref(db, `/categories/${id}`), (snapshot) => {
@@ -138,7 +169,7 @@ export default function MobileLegends2() {
     const [dataProduct, setDataProduct] = useState([]);
 
     useEffect(() => {
-        onValue(ref(db, `/product-ml-2`), (snapshot) => {
+        onValue(ref(db, `/product-ml-3`), (snapshot) => {
             setDataProduct([]);
             const data = snapshot.val();
             if (data !== null) {
@@ -160,6 +191,9 @@ export default function MobileLegends2() {
         const phone_whatsapp = phone;
         const user_id = event.target.user_id.value;
         const zone_id = event.target.zone_id.value;
+        const email = event.target.email.value;
+        const password = event.target.password.value;
+        const login_via = event.target.login_via.value;
         const inputUsername = event.target.username.value;
         const category = event.target.category.value;
         const productsId = document.querySelector('input[name="product"]:checked');
@@ -173,7 +207,7 @@ export default function MobileLegends2() {
         const nama = event.target.nama.value;
         const randomValue = generateRandomValue();
         setInputValue(randomValue);
-        const url = `https://wa.me/${phone_whatsapp}?text=*›%20Game*%20%3A%20${encodeURIComponent(category)}%0A*›%20Username%20ID*%20%3A%20${encodeURIComponent(inputUsername)}%0A*›%20Order%20ID*%20%3A%20${encodeURIComponent(user_id)}%20(%20${encodeURIComponent(zone_id)}%20)%0A*›%20Item*%20%3A%20${encodeURIComponent(products)}%0A*›%20Pembayaran%20via*%20%3A%20${encodeURIComponent(payment)}%20${encodeURIComponent(payment_number_account)}%0A*›%20Total*%20%3A%20Rp%20${encodeURIComponent(products_price)}%2C-%0A*›%20Nama Costumer*%20%3A%20${encodeURIComponent(nama)}%0A*›%20RefId*%20%3A%20%60%60%60S2302160${encodeURIComponent(randomValue)}%60%60%60%0A%0AKirim%20Bukti%20Pembayaran%20Disini%20ya%0AJika%20sudah%20ketik%20*PING*%0A%0A*_Best%20regards_*%0A*winxshopeid*%0Ahttps%3A%2F%2Fwinxshopeid.netlify.app`;
+        const url = `https://wa.me/${phone_whatsapp}?text=*›%20Game*%20%3A%20${encodeURIComponent(category)}%0A*›%20Email*%20%3A%20${encodeURIComponent(email)}%0A*›%20Password*%20%3A%20${encodeURIComponent(password)}%0A*›%20Login via*%20%3A%20${encodeURIComponent(login_via)}%0A*›%20Username%20ID*%20%3A%20${encodeURIComponent(inputUsername)}%0A*›%20Order%20ID*%20%3A%20${encodeURIComponent(user_id)}%20(%20${encodeURIComponent(zone_id)}%20)%0A*›%20Item*%20%3A%20${encodeURIComponent(products)}%0A*›%20Pembayaran%20via*%20%3A%20${encodeURIComponent(payment)}%20${encodeURIComponent(payment_number_account)}%0A*›%20Total*%20%3A%20Rp%20${encodeURIComponent(products_price)}%2C-%0A*›%20Nama Costumer*%20%3A%20${encodeURIComponent(nama)}%0A*›%20RefId*%20%3A%20%60%60%60S2302160${encodeURIComponent(randomValue)}%60%60%60%0A%0AKirim%20Bukti%20Pembayaran%20Disini%20ya%0AJika%20sudah%20ketik%20*PING*%0A%0A*_Best%20regards_*%0A*winxshopeid*%0Ahttps%3A%2F%2Fwinxshopeid.netlify.app`;
         window.open(url);
 
     };
@@ -223,6 +257,16 @@ export default function MobileLegends2() {
                                             <span className='border border-indigo-500 bg-indigo-500 px-2 text-white rounded-full'>1</span>&nbsp;Masukkan User ID
                                         </div>
                                         <div className='xl:grid xl:grid-cols-2 lg:grid-cols-1 lg:grid md:grid-cols-2 md:grid sm:grid sm:grid-cols-1 xs:grid xs:grid-cols-1 xss:grid xss:grid-cols-1 gap-x-8 gap-y-4 px-2 py-2 mb-2'>
+                                            <div className='relative'>
+                                                <input type="text" id="email" name='email' className="block border hover:ring-indigo-500 hover:border-indigo-500 px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " maxLength="320" value={email} onChange={handleChangeEmail} required />
+                                                <label htmlFor="email" className="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1">Masukkan Email</label>
+                                                {errorEmail && <div className="errorEmail text-sm text-red-500 sm:mb-3">{errorEmail}</div>}
+                                            </div>
+                                            <div className='relative'>
+                                                <input type="text" id="password" name='password' className="block border hover:ring-indigo-500 hover:border-indigo-500 px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " maxLength="100" value={password} onChange={handleChangePassword} required />
+                                                <label htmlFor="password" className="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1">Masukkan Password</label>
+                                                {errorPassword && <div className="errorPassword text-sm text-red-500 sm:mb-3">{errorPassword}</div>}
+                                            </div>
                                             <div className="relative">
                                                 {dataCategory.map((item, index) => (
                                                     <>
@@ -241,7 +285,24 @@ export default function MobileLegends2() {
                                                 {errorZone_id && <div className="errorZone_id text-sm text-red-500">{errorZone_id}</div>}
                                             </div>
                                             <div className='relative'>
-                                                <FormControl type="text" id='username' name='username' value={username || (errorUsername && "User Tidak Ditemukan") || ""} onChange={event => setUsername(event.target.value)} disabled />
+                                                <FormControl
+                                                    type="text"
+                                                    id='username'
+                                                    name='username'
+                                                    value={isUsernameLoading ? "" : (errorUsername ? "User Tidak Ditemukan" : username)}
+                                                    onChange={event => setUsername(event.target.value)}
+                                                    disabled
+                                                    isInvalid={!!errorUsername}
+                                                />
+                                            </div>
+                                            <div className='relative'>
+                                                <FormSelect name='login_via' id='login_via' required>
+                                                    <option selected disabled>~ Login Via ~</option>
+                                                    <option value="Moonton">Moonton</option>
+                                                    <option value="Facebook">Facebook</option>
+                                                    <option value="Vk">Vk</option>
+                                                    <option value="TiKTok">TiKTok</option>
+                                                </FormSelect>
                                             </div>
                                         </div>
                                         <div>
@@ -365,6 +426,16 @@ export default function MobileLegends2() {
                                             <span className='border border-indigo-500 bg-indigo-500 px-2 text-white rounded-full'>1</span>&nbsp;Masukkan User ID
                                         </div>
                                         <div className='xl:grid xl:grid-cols-2 lg:grid-cols-1 lg:grid md:grid-cols-2 md:grid sm:grid sm:grid-cols-1 xs:grid xs:grid-cols-1 xss:grid xss:grid-cols-1 gap-x-8 gap-y-4 px-2 py-2 mb-2'>
+                                            <div className='relative'>
+                                                <input type="text" id="email" name='email' className="block border hover:ring-indigo-500 hover:border-indigo-500 px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " maxLength="320" value={email} onChange={handleChangeEmail} required />
+                                                <label htmlFor="email" className="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1">Masukkan Email</label>
+                                                {errorEmail && <div className="errorEmail text-sm text-red-500 sm:mb-3">{errorEmail}</div>}
+                                            </div>
+                                            <div className='relative'>
+                                                <input type="text" id="password" name='password' className="block border hover:ring-indigo-500 hover:border-indigo-500 px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " maxLength="100" value={password} onChange={handleChangePassword} required />
+                                                <label htmlFor="password" className="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1">Masukkan Password</label>
+                                                {errorPassword && <div className="errorPassword text-sm text-red-500 sm:mb-3">{errorPassword}</div>}
+                                            </div>
                                             <div className="relative">
                                                 {dataCategory.map((item, index) => (
                                                     <>
@@ -383,7 +454,24 @@ export default function MobileLegends2() {
                                                 {errorZone_id && <div className="errorZone_id text-sm text-red-500">{errorZone_id}</div>}
                                             </div>
                                             <div className='relative'>
-                                                <FormControl type="text" id='username' name='username' value={username || (errorUsername && "User Tidak Ditemukan") || ""} onChange={event => setUsername(event.target.value)} disabled />
+                                                <FormControl
+                                                    type="text"
+                                                    id='username'
+                                                    name='username'
+                                                    value={isUsernameLoading ? "" : (errorUsername ? "User Tidak Ditemukan" : username)}
+                                                    onChange={event => setUsername(event.target.value)}
+                                                    disabled
+                                                    isInvalid={!!errorUsername}
+                                                />
+                                            </div>
+                                            <div className='relative'>
+                                                <FormSelect name='login_via' id='login_via' required>
+                                                    <option selected disabled>~ Login Via ~</option>
+                                                    <option value="Moonton">Moonton</option>
+                                                    <option value="Facebook">Facebook</option>
+                                                    <option value="Vk">Vk</option>
+                                                    <option value="TiKTok">TiKTok</option>
+                                                </FormSelect>
                                             </div>
                                         </div>
                                         <div>

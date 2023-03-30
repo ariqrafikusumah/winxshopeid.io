@@ -137,6 +137,21 @@ function Dashboard() {
               </div>
             </div>
           </a>
+          <a href="/admin/mobile-legend-3" className=' no-underline'>
+            <div className=" hover:text-indigo-500 hover:bg-indigo-200 border shadow rounded-lg p-6">
+              <div className='flex gap-2'>
+                <div className='py-3'>
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-9">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125" />
+                  </svg>
+                </div>
+                <div>
+                  <h2 className="text-xl font-bold mb-2">Mobile Legends 3</h2>
+                  <p className="text-gray-700 text-lg font-bold">Edit</p>
+                </div>
+              </div>
+            </div>
+          </a>
           <a href="/admin/valorant" className=' no-underline'>
             <div className=" hover:text-indigo-500 hover:bg-indigo-200 border shadow rounded-lg p-6">
               <div className='flex gap-2'>
@@ -301,7 +316,7 @@ function Dashboard() {
               </div>
             </div>
           </a>
-          <a href="/admin/pop-up" className=' no-underline'>
+          {/* <a href="/admin/pop-up" className=' no-underline'>
             <div className=" hover:text-indigo-500 hover:bg-indigo-200 border shadow rounded-lg p-6">
               <div className='flex gap-2'>
                 <div className='py-3'>
@@ -313,7 +328,7 @@ function Dashboard() {
                 </div>
               </div>
             </div>
-          </a>
+          </a> */}
           <a href="/admin/whatsapp-setting" className=' no-underline'>
             <div className=" hover:text-indigo-500 hover:bg-indigo-200 border shadow rounded-lg p-6">
               <div className='flex gap-2'>
